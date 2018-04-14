@@ -1,5 +1,3 @@
- language: python
- before_script:
-   - pip install unittest
- services:
-   - mongodb
+language: python
+services:
+  - mongodb
