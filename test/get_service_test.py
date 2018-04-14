@@ -8,7 +8,7 @@ class TestGet(unittest.TestCase):
         self.app.testing = True
 
     def test_get(self):
-        """Debe de regresar el objeto guardado en la base de datos"""
+        """Debe de regresar el objeto guardado en la base de datas"""
         headers = {"Content-Type": "application/json" }
         result = self.app.get('/testParaObtener', query_string={"id":0}, headers=headers)
         self.assertEqual(result.status_code, 200)

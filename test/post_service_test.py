@@ -8,7 +8,7 @@ class TestPost(unittest.TestCase):
         self.app.testing = True
 
     def test_post(self):
-        """Debe de create un objeto en la base de datos"""        
+        """Debe de create un objeto en la base de datas"""        
         data = {'llave':'valor'}
         headers = {"Content-Type": "application/json" }
         result = self.app.post('/testCrear', data=json.dumps(data), headers=headers)

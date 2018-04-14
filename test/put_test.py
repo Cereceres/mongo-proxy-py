@@ -12,7 +12,7 @@ class Testput(unittest.TestCase):
     def test_put_200(self):
         """Debe regresar 200 si objeto existe y lo actualiza"""
         database.insert('test', {"id":"idQueSiExiste", "algunaValor": "algunValor"})
-        body, code = put('test', {"id":"idQueSiExiste"},{"algunaValor": "ConAlgunDatoActualizado"})
+        body, code = put('test', {"id":"idQueSiExiste"},{"algunaValor": "ConAlgundataActualizado"})
         self.assertTrue(code == 200)
         print 'body ', body
         object_saved = json.loads(body)
