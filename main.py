@@ -24,12 +24,14 @@ def home(collection):
     # se obtiene el metodo
     metodo = request.method
     # se obtiene la query
-    query = request.args
+    query = request.args.to_dict()
     # se comprueban los metodos llamados
     if (metodo == 'GET'):
         return get(collection, query)
     if (metodo == 'PUT'):
-        return put(collection, query, datoParaGuardar)
+        response =  put(collection, query, datoParaGuardar)
+        print 'respobse ', response
+        return response
     if (metodo == 'POST'):
         res =  post(collection, datoParaGuardar)
         print 'res ', res

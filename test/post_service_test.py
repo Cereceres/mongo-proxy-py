@@ -14,9 +14,7 @@ class TestPost(unittest.TestCase):
         result = self.app.post('/testCrear', data=json.dumps(data), headers=headers)
         print 'result ', result
         self.assertEqual(result.status_code, 200)
-        self.assertEqual(None, 'valor')
-
-
+        self.assertTrue(json.loads(result.data))
 
 if __name__ == '__main__':
     unittest.main()
