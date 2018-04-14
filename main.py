@@ -18,24 +18,24 @@ def parse_string(string):
 
 @app.route("/<collection>", methods=["GET", "PUT", "POST", "DELETE"])
 def home(collection):
-    coleccion = collection
+    collection = collection
     # se obtiene el dato para guardar
     datoParaGuardar =  parse_string(request.data)
     # se obtiene el metodo
     metodo = request.method
-    # se obtiene la consulta
-    consulta = request.args
+    # se obtiene la query
+    query = request.args
     # se comprueban los metodos llamados
     if (metodo == 'GET'):
-        return get(coleccion, consulta)
+        return get(collection, query)
     if (metodo == 'PUT'):
-        return put(coleccion, consulta, datoParaGuardar)
+        return put(collection, query, datoParaGuardar)
     if (metodo == 'POST'):
-        res =  post(coleccion, datoParaGuardar)
+        res =  post(collection, datoParaGuardar)
         print 'res ', res
         return res
     if (metodo == 'DELETE'):
-        return remove(coleccion, consulta)
+        return remove(collection, query)
 # se inicia la app
 if __name__ == "__main__":
     app.run(debug=True)
