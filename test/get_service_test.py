@@ -1,5 +1,6 @@
 import unittest
 import main
+from lib.db import DB as database
 import json
 
 class TestGet(unittest.TestCase):
