@@ -1,16 +1,19 @@
 from pymongo import MongoClient, uri_parser
 from bson.objectid import ObjectId
 import os
-host =  os.environ.get('HOST') or 'mongodb://localhost'
-port =  os.environ.get('PORT') or '27017'
-url =  os.environ.get('URL') or host + ':' + port
-url_parsed = uri_parser.parse_uri(url)
-database_name = url_parsed.get('database')
-database =  os.environ.get('DB') or database_name or 'testing'
-client = MongoClient(url)
-db = client.get_database(name=database)
 
+def get_db():
+    host =  os.environ.get('HOST') or 'mongodb://localhost'
+    port =  os.environ.get('PORT') or '27017'
+    url =  os.environ.get('URL') or host + ':' + port
+    url_parsed = uri_parser.parse_uri(url)
+    database_name = url_parsed.get('database')
+    database =  os.environ.get('DB') or database_name or 'testing'
+    client = MongoClient(url)
+    db = client.get_database(name=database)
+    return db
 
+db = get_db()
 
 class DB:
     @staticmethod
