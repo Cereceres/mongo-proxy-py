@@ -12,7 +12,6 @@ class TestPost(unittest.TestCase):
         data = {'llave':'valor'}
         headers = {"Content-Type": "application/json" }
         result = self.app.post('/testCrear', data=json.dumps(data), headers=headers)
-        print 'result ', result
         self.assertEqual(result.status_code, 200)
         self.assertTrue(json.loads(result.data))
 

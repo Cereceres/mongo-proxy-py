@@ -14,9 +14,7 @@ class Testput(unittest.TestCase):
         database.insert('test', {"id":"idQueSiExiste", "algunaValor": "algunValor"})
         body, code = put('test', {"id":"idQueSiExiste"},{"algunaValor": "ConAlgundataActualizado"})
         self.assertTrue(code == 200)
-        print 'body ', body
         object_saved = json.loads(body)
-        print 'object_saved ', object_saved
         self.assertTrue(object_saved )
 
 if __name__ == '__main__':
