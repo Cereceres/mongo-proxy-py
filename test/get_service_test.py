@@ -16,16 +16,17 @@ class TestGet(unittest.TestCase):
         data = result.data
         print 'data ', data
         self.assertTrue(len(data))
+
     def test_get_by_id(self):
         """Debe de regresar el objeto guardado en la base de datas"""
-        database.insert('testParaActualizar', {"key":"idQueSiExiste", "algunaValor": "algunValor"})
-        database.find_one('testParaActualizar', {"key":"idQueSiExiste"})
+        database.insert('testParaObtener', {"key":"idQueSiExiste", "algunaValor": "algunValor"})
+        inserted = database.find_one('testParaObtener', {"key":"idQueSiExiste"})
+        print 'inserted ', inserted
         headers = {"Content-Type": "application/json" }
-        result = self.app.get('/testParaObtener', query_string={"id":0}, headers=headers)
+        result = self.app.get('/testParaObtener/%s'%inserted['_id'], headers=headers)
         self.assertEqual(result.status_code, 200)
-        data = result.data
-        print 'data ', data
-        self.assertTrue(len(data))
+        data = json.loads(result.data)
+        self.assertTrue(data)
 
 
 

@@ -16,12 +16,14 @@ def parse_string(string):
 @app.route("/<collection>/<id>", methods=["GET", "PUT", "DELETE"])
 def home(collection, id=None):
     collection = collection
+    print 'collection ', collection
     dataParaGuardar =  parse_string(request.data)
     metodo = request.method
     query = request.args.to_dict()
 
     if not len(query) and id:
         query = { "_id": id }
+    print 'query ', query
     if (metodo == 'GET'):
         return get(collection, query)
     if (metodo == 'PUT'):
