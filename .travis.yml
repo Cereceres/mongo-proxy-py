@@ -4,4 +4,5 @@ services:
 install:
   - pip install -r requirements.txt
 script:
+  - export PATH=$TRAVIS_BUILD_DIR:$PATH
   - python -m unittest discover -v -s test -p "*_test.py"
