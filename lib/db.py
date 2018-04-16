@@ -28,6 +28,8 @@ class DB:
         if query.get('_id'):
             query['_id'] = ObjectId(query.get('_id'))
         fund = db[collection].find_one(query)
+        if not fund:
+            return fund
         fund['_id'] = str(fund['_id'])
         return fund
     @staticmethod
